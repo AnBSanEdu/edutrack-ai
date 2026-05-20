@@ -1,28 +1,28 @@
 query "subjects/{id}" verb=GET {
   api_group = "subjects"
-  auth = true
+  auth = "user"
 
   input {
-    int id from=path
+    int id
   }
 
   stack {
     db.get subject {
       field_name = "id"
       field_value = $input.id
+      output = ["id", "created_at", "name", "description", "user_id"]
     } as $subject
-
-    precondition ($subject != null) {
+  
+    precondition ($subject == null) {
       error_type = "notfound"
       error = "Subject not found."
     }
-
-    precondition ($subject.user_id == $auth.id) {
+  
+    precondition ($subject.user_id != $auth.id) {
       error_type = "accessdenied"
       error = "You do not have permission to access this subject."
     }
   }
 
   response = $subject
-  tags = []
 }
