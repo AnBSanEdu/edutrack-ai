@@ -248,7 +248,7 @@
   {
     "id": 3899870,
     "path": "apis/subjects/4000001_subjects_GET.xs",
-    "status": "unchanged",
+    "status": "changed",
     "type": "api_endpoint",
     "staged": false,
     "sha256": "9b260347f4769c95346434a975836de3a2b6d181ff336ff11185e1a5b72127ed",
@@ -257,7 +257,7 @@
   {
     "id": 3899871,
     "path": "apis/subjects/4000002_subjects_by_id_GET.xs",
-    "status": "unchanged",
+    "status": "changed",
     "type": "api_endpoint",
     "staged": false,
     "sha256": "e7fc948d18ab4e32b40b453d00dda67e190c35843bbd6fa9a6132b053a61d9aa",
@@ -266,7 +266,7 @@
   {
     "id": 3899872,
     "path": "apis/subjects/4000003_subjects_by_id_PATCH.xs",
-    "status": "unchanged",
+    "status": "changed",
     "type": "api_endpoint",
     "staged": false,
     "sha256": "5294036147c55f40a892c0bdd4c9c782d65e7ba88cd114c2211bc627a2c4cd46",
@@ -287,5 +287,40 @@
     "staged": false,
     "sha256": "18361b6fac4662772b16042cea9abfab20785a1750dcd94db719582dfd35b684",
     "original": "dGFibGUgYWNhZGVtaWNfdGFza3MgewogIGF1dGggPSBmYWxzZQoKICBzY2hlbWEgewogICAgaW50IGlkCiAgICB0aW1lc3RhbXAgY3JlYXRlZF9hdD89bm93CiAgICBpbnQgdXNlcl9pZAogICAgaW50IHN1YmplY3RfaWQKICAgIHRleHQgdGl0bGUKICAgIHRleHQ/IGRlc2NyaXB0aW9uCiAgICB0aW1lc3RhbXA/IGR1ZV9kYXRlCiAgICBlbnVtIHN0YXR1cz8gewogICAgICB2YWx1ZXMgPSBbInBlbmRpbmciLCAiaW4tcHJvZ3Jlc3MiLCAiY29tcGxldGVkIl0KICAgIH0KICB9CgogIGluZGV4ID0gWwogICAge3R5cGU6ICJwcmltYXJ5IiwgZmllbGQ6IFt7bmFtZTogImlkIn1dfQogICAge3R5cGU6ICJidHJlZSIsIGZpZWxkOiBbe25hbWU6ICJjcmVhdGVkX2F0Iiwgb3A6ICJkZXNjIn1dfQogICAge3R5cGU6ICJidHJlZSIsIGZpZWxkOiBbe25hbWU6ICJ1c2VyX2lkIiwgb3A6ICJhc2MifV19CiAgICB7dHlwZTogImJ0cmVlIiwgZmllbGQ6IFt7bmFtZTogInN1YmplY3RfaWQiLCBvcDogImFzYyJ9XX0KICBdCn0="
+  },
+  {
+    "id": 0,
+    "path": "apis/authentication/3600255_demo_agent_conversation_POST.xs",
+    "status": "new",
+    "type": "api_endpoint",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "apis/members_accounts/3600260_user_join_account_POST.xs",
+    "status": "new",
+    "type": "api_endpoint",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "apis/members_accounts/3600261_account_POST.xs",
+    "status": "new",
+    "type": "api_endpoint",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "agents/18162_xano_example_agent.xs",
+    "status": "new",
+    "type": "agent",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "addons/109608_user.xs",
+    "status": "new",
+    "type": "addon",
+    "staged": false
   }
 ]
