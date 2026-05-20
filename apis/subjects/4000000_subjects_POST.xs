@@ -1,6 +1,6 @@
-query "subjects" verb=POST {
+query subjects verb=POST {
   api_group = "subjects"
-  auth = true
+  auth = "user"
 
   input {
     text name
@@ -8,14 +8,15 @@ query "subjects" verb=POST {
   }
 
   stack {
-    db.add subject {
-      created_at = "now"
-      name = $input.name
-      description = $input.description
-      user_id = $auth.id
+    db.add subjects {
+      data = {
+        created_at : "now"
+        name       : $input.name
+        description: $input.description
+        user_id    : $auth.id
+      }
     } as $new_subject
   }
 
   response = $new_subject
-  tags = []
 }
