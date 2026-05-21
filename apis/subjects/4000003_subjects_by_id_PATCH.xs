@@ -20,7 +20,7 @@ query "subjects/{id}" verb=PATCH {
       error = "Subject not found."
     }
   
-    precondition ($subject.user_id == $auth.id) {
+    precondition ($subject.user_id != $auth.id) {
       error_type = "accessdenied"
       error = "You do not have permission to modify this subject."
     }
