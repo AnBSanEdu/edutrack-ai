@@ -12,23 +12,22 @@ query "subjects/{id}" verb=DELETE {
       field_value = $input.id
       output = ["id", "user_id"]
     } as $subject
-
+  
     precondition ($subject == null) {
       error_type = "notfound"
       error = "Subject not found."
     }
-
+  
     precondition ($subject.user_id != $auth.id) {
       error_type = "accessdenied"
       error = "You do not have permission to delete this subject."
     }
-
-    db.delete {
-      table = "subject"
+  
+    db.del subject {
       field_name = "id"
       field_value = $input.id
-    } as $deleted_subject
+    }
   }
 
-  response = $deleted_subject
+  response = $subject
 }
