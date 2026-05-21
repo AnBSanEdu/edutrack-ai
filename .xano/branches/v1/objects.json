@@ -105,11 +105,13 @@
     "staged": false
   },
   {
-    "id": 0,
+    "id": 413960,
     "path": "apis/subjects/api_group.xs",
-    "status": "new",
+    "status": "unchanged",
     "type": "api_group",
-    "staged": false
+    "staged": false,
+    "sha256": "f039b57ac2cd9b20f9724fcf34db8612427eaa7e45254d299cf24a3f5cc725cb",
+    "original": "Ly8gRW5kcG9pbnRzIGZvciBDUlVEIG9wZXJhdGlvbnMgb24gc3ViamVjdHMuCmFwaV9ncm91cCBTdWJqZWN0cyB7CiAgY2Fub25pY2FsID0gInBDMjhFa2l0Igp9"
   },
   {
     "id": 0,
@@ -273,11 +275,13 @@
     "original": "cXVlcnkgInN1YmplY3RzL3tpZH0iIHZlcmI9UEFUQ0ggewogIGFwaV9ncm91cCA9ICJzdWJqZWN0cyIKICBhdXRoID0gInVzZXIiCgogIGlucHV0IHsKICAgIGludCBpZAogICAgdGV4dD8gbmFtZQogICAgdGV4dD8gZGVzY3JpcHRpb24KICB9CgogIHN0YWNrIHsKICAgIGRiLmdldCBzdWJqZWN0IHsKICAgICAgZmllbGRfbmFtZSA9ICJpZCIKICAgICAgZmllbGRfdmFsdWUgPSAkaW5wdXQuaWQKICAgICAgb3V0cHV0ID0gWyJpZCIsICJ1c2VyX2lkIl0KICAgIH0gYXMgJHN1YmplY3QKICAKICAgIHByZWNvbmRpdGlvbiAoJHN1YmplY3QgIT0gbnVsbCkgewogICAgICBlcnJvcl90eXBlID0gIm5vdGZvdW5kIgogICAgICBlcnJvciA9ICJTdWJqZWN0IG5vdCBmb3VuZC4iCiAgICB9CiAgCiAgICBwcmVjb25kaXRpb24gKCRzdWJqZWN0LnVzZXJfaWQgPT0gJGF1dGguaWQpIHsKICAgICAgZXJyb3JfdHlwZSA9ICJhY2Nlc3NkZW5pZWQiCiAgICAgIGVycm9yID0gIllvdSBkbyBub3QgaGF2ZSBwZXJtaXNzaW9uIHRvIG1vZGlmeSB0aGlzIHN1YmplY3QuIgogICAgfQogIAogICAgdXRpbC5nZXRfYWxsX2lucHV0IGFzICRpbnB1dHMKICAgIGRiLnBhdGNoIHN1YmplY3QgewogICAgICBmaWVsZF9uYW1lID0gImlkIgogICAgICBmaWVsZF92YWx1ZSA9ICRpbnB1dC5pZAogICAgICBkYXRhID0gJGlucHV0c3xmaWx0ZXJfZW1wdHlfdGV4dDoiIgogICAgfSBhcyAkdXBkYXRlZF9zdWJqZWN0CiAgfQoKICByZXNwb25zZSA9ICR1cGRhdGVkX3N1YmplY3QKfQ=="
   },
   {
-    "id": 0,
+    "id": 3901892,
     "path": "apis/subjects/4000004_subjects_by_id_DELETE.xs",
-    "status": "new",
+    "status": "changed",
     "type": "api_endpoint",
-    "staged": true
+    "staged": false,
+    "sha256": "4728de48eabd316051517c7a9b19f402fec61497114e04573ef3a865a13a4634",
+    "original": "cXVlcnkgInN1YmplY3RzL3tpZH0iIHZlcmI9REVMRVRFIHsKICBhcGlfZ3JvdXAgPSAiU3ViamVjdHMiCiAgYXV0aCA9ICJ1c2VyIgoKICBpbnB1dCB7CiAgICBpbnQgaWQKICB9CgogIHN0YWNrIHsKICAgIGRiLmdldCBzdWJqZWN0IHsKICAgICAgZmllbGRfbmFtZSA9ICJpZCIKICAgICAgZmllbGRfdmFsdWUgPSAkaW5wdXQuaWQKICAgICAgb3V0cHV0ID0gWyJpZCIsICJ1c2VyX2lkIl0KICAgIH0gYXMgJHN1YmplY3QKICAKICAgIHByZWNvbmRpdGlvbiAoJHN1YmplY3QgPT0gbnVsbCkgewogICAgICBlcnJvcl90eXBlID0gIm5vdGZvdW5kIgogICAgICBlcnJvciA9ICJTdWJqZWN0IG5vdCBmb3VuZC4iCiAgICB9CiAgCiAgICBwcmVjb25kaXRpb24gKCRzdWJqZWN0LnVzZXJfaWQgIT0gJGF1dGguaWQpIHsKICAgICAgZXJyb3JfdHlwZSA9ICJhY2Nlc3NkZW5pZWQiCiAgICAgIGVycm9yID0gIllvdSBkbyBub3QgaGF2ZSBwZXJtaXNzaW9uIHRvIGRlbGV0ZSB0aGlzIHN1YmplY3QuIgogICAgfQogIAogICAgZGIuZGVsIHN1YmplY3QgewogICAgICBmaWVsZF9uYW1lID0gImlkIgogICAgICBmaWVsZF92YWx1ZSA9ICRpbnB1dC5pZAogICAgfQogIH0KCiAgcmVzcG9uc2UgPSAkc3ViamVjdAp9"
   },
   {
     "id": 838855,
@@ -321,6 +325,13 @@
     "path": "addons/109608_user.xs",
     "status": "new",
     "type": "addon",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "apis/subjects/4000005_subjects_search_GET.xs",
+    "status": "new",
+    "type": "api_endpoint",
     "staged": false
   }
 ]
