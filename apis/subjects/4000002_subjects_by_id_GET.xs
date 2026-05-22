@@ -10,7 +10,7 @@ query "subjects/{id}" verb=GET {
     db.get subject {
       field_name = "id"
       field_value = $input.id
-      output = ["id", "created_at", "name", "description", "user_id"]
+      output = ["id", "created_at", "name", "description", "professor", "workload", "semester", "archived", "user_id"]
     } as $subject
   
     precondition ($subject == null) {

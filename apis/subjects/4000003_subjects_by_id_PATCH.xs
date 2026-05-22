@@ -6,6 +6,10 @@ query "subjects/{id}" verb=PATCH {
     int id
     text? name
     text? description
+    text? professor
+    text? workload
+    text? semester
+    bool? archived
   }
 
   stack {
