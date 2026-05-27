@@ -1,5 +1,5 @@
-query "subjects/search" verb=GET {
-  api_group = "subjects"
+query "subjects/search/" verb=GET {
+  api_group = "Subjects"
   auth = "user"
 
   input {
@@ -8,30 +8,51 @@ query "subjects/search" verb=GET {
   }
 
   stack {
-    // 1. Busca inicial
-    db.query subject {
-      where = $db.subject.user_id == $auth.id
+    // 1. Initial search
+    db.query subjects {
+      where = $db.subjects.user_id == $auth.id
       return = {type: "list"}
     } as $subjects
 
-    // 2. Atualização da variável usando a sintaxe correta 'var'
-    if ($input.name != null) {
-      var $subjects {
-        value = $subjects|filter_match_ci:"name",$input.name
+    // 2. Filter by name if provided
+    conditional {
+      if ($input.name != null) {
+        var.update $subjects {
+          value = $subjects|filter:"return $this.name contains '" ~ $input.name ~ "';"
+        }
       }
     }
 
-    // 3. Lógica para tarefas atrasadas
-    if ($input.has_overdue_tasks == true) {
-      // Aqui você deve usar uma função de manipulação de array ou filtro nativo
-      var $subjects {
-        value = $subjects|filter_array_by_overdue_tasks
+    // 3. Filter by overdue tasks if requested
+    conditional {
+      if ($input.has_overdue_tasks == true) {
+        var $overdue_subjects {
+          value = []
+        }
+        foreach ($subjects) {
+          each as $subject {
+            db.query academic_tasks {
+              where = $db.academic_tasks.subject_id == $subject.id && $db.academic_tasks.due_date < "now" && $db.academic_tasks.status != "Concluída"
+              return = { type: "count" }
+            } as $overdue_count
+
+            conditional {
+              if ($overdue_count > 0) {
+                var.update $overdue_subjects {
+                  value = $overdue_subjects|push:$subject
+                }
+              }
+            }
+          }
+        }
+        var.update $subjects {
+          value = $overdue_subjects
+        }
       }
     }
   }
 
-  // No bloco response, use ':' para objetos JSON
-  response: {
+  response = {
     success: true,
     data: $subjects
   }

@@ -5,18 +5,18 @@ query "user/edit_profile" verb=PATCH {
 
   input {
     // The user's updated name.
-    text name?
+    text? name
   
     // The user's updated email address.
-    email email?
+    email? email
   }
 
   stack {
     // Retrieve user record based on auth ID
     db.get user {
-      field_name = "id"
+      field_name  = "id"
       field_value = $auth.id
-      output = ["id", "created_at", "name", "email", "phone", "account_id", "role"]
+      output      = ["id", "created_at", "name", "email", "phone", "account_id", "role"]
     } as $user
   
     // Get the inputs in an object
@@ -25,18 +25,21 @@ query "user/edit_profile" verb=PATCH {
     // Check that the user record matches the auth ID
     precondition ($user.id == $auth.id) {
       error_type = "accessdenied"
-      error = "You don't have access to edit this!"
+      error      = "You don't have access to edit this!"
     }
   
     // Update the user info with the provided information
-    db.patch user {
-      field_name = "id"
+    db.edit user {
+      field_name  = "id"
       field_value = $user.id
-      data = $inputs|filter_empty_text:""
+      data        = {
+        name  : $input.name || $user.name
+        email : $input.email || $user.email
+      }
     } as $updated_user_info
   
     // Create an event log for updated user info
-    function.run "Getting Started Template/create_event_log" {
+    function.run create_event_log {
       input = {
         user_id   : $user.id
         account_id: $user.account_id

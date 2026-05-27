@@ -16,7 +16,7 @@ query account verb=POST {
 
   stack {
     // Create a new account record in the database.
-    db.add account {
+    db.add "" {
       data = {
         name       : $input.name
         description: $input.description
@@ -33,7 +33,7 @@ query account verb=POST {
     } as $updated_user
   
     // Log event for new account created
-    function.run "Getting Started Template/create_event_log" {
+    function.run "" {
       input = {
         user_id   : $updated_user.id
         account_id: $new_account.id

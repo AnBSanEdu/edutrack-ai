@@ -22,7 +22,7 @@ query "user/join_account" verb=POST {
     }
   
     // Retrieve the account record to ensure it exists.
-    db.get account {
+    db.get "" {
       field_name = "id"
       field_value = $input.account_id
     } as $account
@@ -41,7 +41,7 @@ query "user/join_account" verb=POST {
     } as $updated_user
   
     // Log event for user joining account
-    function.run "Getting Started Template/create_event_log" {
+    function.run "" {
       input = {
         user_id   : $updated_user.id
         account_id: $account.id
