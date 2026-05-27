@@ -51,7 +51,7 @@ query "admin/user_role" verb=POST {
     } as $updated_user
   
     // Log the role update event
-    function.run "Getting Started Template/create_event_log" {
+    function.run "" {
       input = {
         user_id   : $admin_user.id
         account_id: $admin_user.account_id

@@ -1,5 +1,5 @@
-query "subjects/{id}" verb=DELETE {
-  api_group = "subjects"
+query "subjects/:id" verb=DELETE {
+  api_group = "Subjects"
   auth = "user"
 
   input {
@@ -7,23 +7,23 @@ query "subjects/{id}" verb=DELETE {
   }
 
   stack {
-    db.get subject {
+    db.get subjects {
       field_name = "id"
       field_value = $input.id
       output = ["id", "user_id"]
     } as $subject
   
-    precondition ($subject == null) {
+    precondition ($subject != null) {
       error_type = "notfound"
       error = "Subject not found."
     }
   
-    precondition ($subject.user_id != $auth.id) {
+    precondition ($subject.user_id == $auth.id) {
       error_type = "accessdenied"
       error = "You do not have permission to delete this subject."
     }
   
-    db.del subject {
+    db.del "subjects" {
       field_name = "id"
       field_value = $input.id
     }

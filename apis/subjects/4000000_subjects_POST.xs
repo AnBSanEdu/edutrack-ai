@@ -1,5 +1,5 @@
 query subjects verb=POST {
-  api_group = "subjects"
+  api_group = "Subjects"
   auth = "user"
 
   input {
@@ -12,6 +12,16 @@ query subjects verb=POST {
   }
 
   stack {
+    db.query subjects {
+      where = $db.subjects.name == $input.name && $db.subjects.professor == $input.professor && $db.subjects.user_id == $auth.id
+      return = {type: "single"}
+    } as $existing
+
+    precondition ($existing == null) {
+      error_type = "inputerror"
+      error = "Você já possui uma disciplina cadastrada com este nome e professor."
+    }
+
     db.add subjects {
       data = {
         created_at : "now"

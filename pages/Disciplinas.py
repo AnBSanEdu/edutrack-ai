@@ -102,7 +102,8 @@ with col_search:
     query = st.text_input("🔍 Buscar por nome", placeholder="Ex: Cálculo, Python...", label_visibility="collapsed")
 
 with col_filter:
-    filtro_arquivado = st.checkbox("📦 Mostrar Arquivadas")
+    filtro_arquivado = st.checkbox("📦 Arquivadas")
+    filtro_atraso = st.checkbox("⚠️ Em atraso")
 
 with col_btn:
     nova_disciplina = st.button("➕ Nova Disciplina", use_container_width=True, type="primary")

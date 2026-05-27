@@ -10,12 +10,13 @@ import streamlit as st
 # Configuração da instância Xano
 # ──────────────────────────────────────────────
 XANO_INSTANCE = "x8ki-letl-twmt"
-XANO_BASE = f"https://{XANO_INSTANCE}.execute-api.us-east-1.xano.io/api"
+XANO_BASE = f"https://{XANO_INSTANCE}.n7.xano.io/api"
 
 # Canonicals dos grupos de API
-API_AUTH     = f"{XANO_BASE}:ZpmjIFgO"
-API_SUBJECTS = f"{XANO_BASE}:pC28Ekit"
-API_MEMBERS  = f"{XANO_BASE}:{'members_accounts'}"   # atualizar após verificar canonical
+API_AUTH     = f"{XANO_BASE}:1p5Q7-O6"
+API_SUBJECTS   = f"{XANO_BASE}:rsk2feWG"
+API_MEMBERS    = f"{XANO_BASE}:sLQrafAf"
+API_EVENT_LOGS = f"{XANO_BASE}:Rp2UEl2n"
 
 
 # ──────────────────────────────────────────────
@@ -169,7 +170,7 @@ def search_subjects(query: str) -> list | None:
 # 📝 Tarefas Acadêmicas (Academic Tasks)
 # ──────────────────────────────────────────────
 
-API_TASKS = f"{XANO_BASE}:academic_tasks"  # canonical será atualizado após push
+API_TASKS = f"{XANO_BASE}:841qVKgf"
 
 
 def get_tasks(status: str = None, subject_id: int = None) -> list:

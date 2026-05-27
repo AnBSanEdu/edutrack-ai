@@ -1,5 +1,5 @@
 query subjects verb=GET {
-  api_group = "subjects"
+  api_group = "Subjects"
   auth = "user"
 
   input {
@@ -7,8 +7,8 @@ query subjects verb=GET {
   }
 
   stack {
-    db.query subject {
-      where = $db.subject.user_id == $auth.id && $db.subject.archived == $input.archived
+    db.query subjects {
+      where = $db.subjects.user_id == $auth.id && $db.subjects.archived == $input.archived
       return = {type: "list"}
       output = ["id", "created_at", "name", "description", "professor", "workload", "semester", "archived", "user_id"]
     } as $subjects

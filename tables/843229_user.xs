@@ -1,26 +1,17 @@
-// Meu primeiro comentário via VS Code
+// Stores user information and allows the user to authenticate  against
 table user {
   auth = true
 
   schema {
     int id
-    timestamp created_at?=now {
-      visibility = "private"
-    }
-  
+    timestamp created_at?=now
     text name filters=trim
     email? email filters=trim|lower
     password? password filters=min:8|minAlpha:1|minDigit:1
   
-    // Reference to the company the user belongs to.
-    int account_id? {
-      table = "account"
-    }
-  
     // The role of the user within their company (e.g., 'admin', 'member').
     enum role? {
       values = ["admin", "member"]
-      visibility = "private"
     }
   
     object password_reset? {

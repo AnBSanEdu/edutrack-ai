@@ -1,59 +1,40 @@
 // Atualizar uma tarefa específica do usuário autenticado (inclui marcar como concluída).
-query "academic_tasks/:id" verb=PATCH {
+query academic_tasks_by_id verb=PATCH {
   api_group = "AcademicTasks"
+  auth = "user"
 
   input {
-    int     id
-    text?   title
-    text?   description
+    int id
+    text? title
+    text? description
     timestamp? due_date
-    text?   status
-    text?   priority
+    text? status
+    text? priority
   }
 
   stack {
-    // Obter o usuário autenticado
-    auth.getUserRecord {} as $me
-
     // Verificar que a tarefa pertence ao usuário
     db.get academic_tasks {
-      field_name  = "id"
+      field_name = "id"
       field_value = $input.id
-      output      = ["id", "user_id"]
     } as $task
-
-    precondition ($task != null && $task.user_id == $me.id) {
+  
+    precondition ($task == null || $task.user_id != $auth.id) {
       error_type = "accessdenied"
-      error      = "Tarefa não encontrada ou sem permissão."
+      error = "Tarefa não encontrada ou sem permissão."
     }
-
-    // Montar payload com somente os campos informados
-    var payload = {}
-
-    if ($input.title != null) {
-      var payload = array.merge($payload, {title: $input.title})
-    }
-
-    if ($input.description != null) {
-      var payload = array.merge($payload, {description: $input.description})
-    }
-
-    if ($input.due_date != null) {
-      var payload = array.merge($payload, {due_date: $input.due_date})
-    }
-
-    if ($input.status != null) {
-      var payload = array.merge($payload, {status: $input.status})
-    }
-
-    if ($input.priority != null) {
-      var payload = array.merge($payload, {priority: $input.priority})
-    }
-
+  
     // Aplicar a atualização
     db.edit academic_tasks {
-      id   = $input.id
-      data = $payload
+      field_name = "id"
+      field_value = $input.id
+      data = {
+        title      : $input.title || $task.title
+        description: $input.description || $task.description
+        due_date   : $input.due_date || $task.due_date
+        status     : $input.status || $task.status
+        priority   : $input.priority || $task.priority
+      }
     } as $updated_task
   }
 

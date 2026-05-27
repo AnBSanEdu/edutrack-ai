@@ -1,36 +1,35 @@
 // Criar uma nova tarefa acadêmica vinculada ao usuário autenticado e a uma disciplina.
-query "academic_tasks" verb=POST {
+query academic_tasks verb=POST {
   api_group = "AcademicTasks"
+  auth = "user"
 
   input {
     int subject_id
     text title
     text? description
     timestamp? due_date
-    text status?="pending"
-    text priority?="medium"
+    text status?=pending
+    text priority?=medium
   }
 
   stack {
     // Garantir que o usuário está autenticado
-    auth.getUserRecord {} as $me
-
     // Verificar que a disciplina pertence ao usuário
-    db.get subject {
-      field_name  = "id"
+    db.get "" {
+      field_name = "id"
       field_value = $input.subject_id
-      output      = ["id", "user_id"]
+      output = ["id", "user_id"]
     } as $subject
-
-    precondition ($subject != null && $subject.user_id == $me.id) {
+  
+    precondition ($subject != null && $subject.user_id == $auth.id) {
       error_type = "accessdenied"
-      error      = "Disciplina não encontrada ou sem permissão."
+      error = "Disciplina não encontrada ou sem permissão."
     }
-
+  
     // Criar a tarefa
     db.add academic_tasks {
       data = {
-        user_id    : $me.id
+        user_id    : $auth.id
         subject_id : $input.subject_id
         title      : $input.title
         description: $input.description
