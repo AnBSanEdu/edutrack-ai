@@ -1,4 +1,4 @@
-query "subjects/:id" verb=DELETE {
+query "subjects/{id}" verb=DELETE {
   api_group = "Subjects"
   auth = "user"
 
