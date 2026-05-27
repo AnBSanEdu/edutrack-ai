@@ -5,9 +5,9 @@ query "demo-agent/conversation" verb=POST {
 
   input {
     // The ID of the conversation from the conversation table.
-    int? conversation_id?
+    int? conversation_id
   
-    json message?
+    json? message
   }
 
   stack {
@@ -16,7 +16,7 @@ query "demo-agent/conversation" verb=POST {
     }
   
     var $messages {
-      value = {}
+      value = []
     }
   
     // This condition handles the logic between new and existing conversations.
@@ -44,7 +44,7 @@ query "demo-agent/conversation" verb=POST {
       
         // Update messages variable
         var.update $messages {
-          value = $input.message
+          value = [$input.message]
         }
       }
     

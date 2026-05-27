@@ -1,4 +1,4 @@
-// Endpoints for managing subjects.
-api_group "Subjects" {
-  canonical = "subjects-api"
+// Endpoints for CRUD operations on subjects.
+api_group Subjects {
+  canonical = "rsk2feWG"
 }
